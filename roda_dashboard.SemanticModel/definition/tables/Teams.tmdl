@@ -1,0 +1,25 @@
+table Teams
+	lineageTag: 951735cd-5187-438a-81b8-c8bdbf8e6cad
+
+	column Team
+		dataType: string
+		lineageTag: 6fcc22ad-4bff-4248-9b05-43563d631d7d
+		summarizeBy: none
+		sourceColumn: Team
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Teams = m
+		mode: import
+		source =
+				let
+				    Source = TeamWedstrijden,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Team"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,64 @@
+table _Metingen
+	lineageTag: a46ad5ae-76c2-42be-adbf-eef37580640a
+
+	measure Wedstrijden = COUNTROWS(TeamWedstrijden)
+		formatString: 0
+		lineageTag: 4a770706-de06-4d7e-b824-cfcae5b7219f
+
+	measure 'Totaal Punten' = SUM(TeamWedstrijden[Punten])
+		formatString: 0
+		lineageTag: afd4b598-62aa-471d-9ca4-3d871ab4a569
+
+	measure 'Doelpunten Voor' = SUM(TeamWedstrijden[Voor])
+		formatString: 0
+		lineageTag: c9c6ef63-00b2-478b-8135-11959da77a31
+
+	measure 'Doelpunten Tegen' = SUM(TeamWedstrijden[Tegen])
+		formatString: 0
+		lineageTag: 714c6f66-f6fa-4efd-887a-42d82d49de82
+
+	measure 'Doelsaldo Totaal' = SUM(TeamWedstrijden[Doelsaldo])
+		formatString: 0
+		lineageTag: f6bde6bc-17a3-47b5-8b02-3b2b90501098
+
+	measure 'Punten per Wedstrijd' = DIVIDE([Totaal Punten], [Wedstrijden])
+		lineageTag: 3bad2d83-c214-4e02-9421-938da01a3fae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Winst = CALCULATE([Wedstrijden], TeamWedstrijden[Resultaat] = "W")
+		formatString: 0
+		lineageTag: 48c5c6c7-e341-4f30-ba69-f8507de3c02f
+
+	measure Gelijk = CALCULATE([Wedstrijden], TeamWedstrijden[Resultaat] = "G")
+		formatString: 0
+		lineageTag: 3847f11e-f20f-4d2a-b9ae-eaba2157e938
+
+	measure Verlies = CALCULATE([Wedstrijden], TeamWedstrijden[Resultaat] = "V")
+		formatString: 0
+		lineageTag: 40de6183-ddd9-4d59-b3a3-1e7e6c185753
+
+	measure 'Winst %' = DIVIDE([Winst], [Wedstrijden])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5f0c351f-365f-4280-b273-897c82546319
+
+	measure Positie = IF(ISBLANK([Wedstrijden]),  BLANK(), RANKX(ALL(Teams), [Totaal Punten] * 1000 + [Doelsaldo Totaal]))
+		formatString: 0
+		lineageTag: 36eef9c5-d23a-47e5-9c42-a12b7b42b2f7
+
+	measure Seizoensverloop = CALCULATE([Totaal Punten], FILTER(ALL(TeamWedstrijden[Ronde]), TeamWedstrijden[Ronde] <= Max(TeamWedstrijden[Ronde])))
+		formatString: 0
+		lineageTag: 97fd9c54-b05d-40f2-a521-82c2481e78a6
+
+	partition _Metingen = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

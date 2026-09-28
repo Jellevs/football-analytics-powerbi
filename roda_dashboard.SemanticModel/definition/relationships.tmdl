@@ -1,0 +1,8 @@
+relationship AutoDetected_fee55c16-291c-44ef-881b-5de8effab712
+	fromColumn: TeamWedstrijden.Team
+	toColumn: Teams.Team
+
+relationship 62c9a8bb-427e-ef10-d5da-792b56dafdaa
+	fromColumn: TeamWedstrijden.Datum
+	toColumn: Datum.Date
+

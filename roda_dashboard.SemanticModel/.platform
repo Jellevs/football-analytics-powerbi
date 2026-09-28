@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "roda_dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "24f449f6-8c56-4506-8a87-cf5473b79b8f"
+  }
+}

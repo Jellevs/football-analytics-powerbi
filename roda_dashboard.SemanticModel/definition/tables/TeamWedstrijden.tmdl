@@ -1,0 +1,116 @@
+table TeamWedstrijden
+	lineageTag: eae14135-f6da-4985-891e-6b6b242302b1
+
+	column Seizoen
+		dataType: string
+		lineageTag: 0955e970-8cb1-43b0-ae79-ae3547682d6d
+		summarizeBy: none
+		sourceColumn: Seizoen
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ronde
+		dataType: int64
+		formatString: 0
+		lineageTag: d3c05795-458e-41d5-9376-eebc798394de
+		summarizeBy: sum
+		sourceColumn: Ronde
+
+		annotation SummarizationSetBy = Automatic
+
+	column Datum
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 12288e4b-7f14-4e30-b3dc-29c186e31a50
+		summarizeBy: none
+		sourceColumn: Datum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Team
+		dataType: string
+		lineageTag: efe73382-8066-470d-870c-68dbb5d8f678
+		summarizeBy: none
+		sourceColumn: Team
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tegenstander
+		dataType: string
+		lineageTag: c3f1221d-6396-4b9e-b662-71ffa63af06a
+		summarizeBy: none
+		sourceColumn: Tegenstander
+
+		annotation SummarizationSetBy = Automatic
+
+	column Voor
+		dataType: int64
+		formatString: 0
+		lineageTag: e33bad99-30a2-43ed-b159-336d5953cb19
+		summarizeBy: sum
+		sourceColumn: Voor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tegen
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b87b9a9-e444-4e3c-b0b0-ce9bc44c9d37
+		summarizeBy: sum
+		sourceColumn: Tegen
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThuisUit
+		dataType: string
+		lineageTag: 9d66fdc8-fd21-41dc-8e25-4895fe5eeb6f
+		summarizeBy: none
+		sourceColumn: ThuisUit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resultaat
+		dataType: string
+		lineageTag: c675a3e1-9d92-46ef-a846-0ec60a64c637
+		summarizeBy: none
+		sourceColumn: Resultaat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Punten
+		dataType: int64
+		formatString: 0
+		lineageTag: 870a5e01-683e-4060-b115-e7bf32e0e6ad
+		summarizeBy: sum
+		sourceColumn: Punten
+
+		annotation SummarizationSetBy = Automatic
+
+	column Doelsaldo
+		dataType: int64
+		formatString: 0
+		lineageTag: a516a25b-3e4b-433f-8241-348f7ff960b4
+		summarizeBy: sum
+		sourceColumn: Doelsaldo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TeamWedstrijden = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({ThuisPerspectief, UitPerspectief}),
+				    #"Added Conditional Column" = Table.AddColumn(Source, "Resultaat", each if [Voor] > [Tegen] then "W" else if [Voor] = [Tegen] then "G" else "V"),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Added Conditional Column", "Punten", each if [Resultaat] = "W" then 3 else if [Resultaat] = "G" then 1 else 0),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Conditional Column1",{{"Punten", Int64.Type}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Doelsaldo", each [Voor] - [Tegen]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Doelsaldo", Int64.Type}, {"Resultaat", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

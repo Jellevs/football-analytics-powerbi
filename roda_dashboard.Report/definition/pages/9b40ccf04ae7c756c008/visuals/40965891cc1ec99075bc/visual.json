@@ -1,0 +1,457 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "40965891cc1ec99075bc",
+  "position": {
+    "x": 24,
+    "y": 232,
+    "z": 5,
+    "height": 824,
+    "width": 1100,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Positie"
+                }
+              },
+              "queryRef": "_Metingen.Positie",
+              "nativeQueryRef": "Positie",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Teams"
+                    }
+                  },
+                  "Property": "Team"
+                }
+              },
+              "queryRef": "Teams.Team",
+              "nativeQueryRef": "Team"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Wedstrijden"
+                }
+              },
+              "queryRef": "_Metingen.Wedstrijden",
+              "nativeQueryRef": "Wedstrijden",
+              "displayName": "GS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Winst"
+                }
+              },
+              "queryRef": "_Metingen.Winst",
+              "nativeQueryRef": "Winst",
+              "displayName": "W"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Gelijk"
+                }
+              },
+              "queryRef": "_Metingen.Gelijk",
+              "nativeQueryRef": "Gelijk",
+              "displayName": "G"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Verlies"
+                }
+              },
+              "queryRef": "_Metingen.Verlies",
+              "nativeQueryRef": "Verlies",
+              "displayName": "V"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Doelpunten Voor"
+                }
+              },
+              "queryRef": "_Metingen.Doelpunten Voor",
+              "nativeQueryRef": "Doelpunten Voor",
+              "displayName": "DV"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Doelpunten Tegen"
+                }
+              },
+              "queryRef": "_Metingen.Doelpunten Tegen",
+              "nativeQueryRef": "Doelpunten Tegen",
+              "displayName": "DT"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Doelsaldo Totaal"
+                }
+              },
+              "queryRef": "_Metingen.Doelsaldo Totaal",
+              "nativeQueryRef": "Doelsaldo Totaal",
+              "displayName": "+/-"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Metingen"
+                    }
+                  },
+                  "Property": "Totaal Punten"
+                }
+              },
+              "queryRef": "_Metingen.Totaal Punten",
+              "nativeQueryRef": "Totaal Punten",
+              "displayName": "Punten"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Metingen"
+                  }
+                },
+                "Property": "Positie"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "dataBars": {
+              "positiveColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#F5C400'"
+                      }
+                    }
+                  }
+                }
+              },
+              "negativeColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#E5484D'"
+                      }
+                    }
+                  }
+                }
+              },
+              "axisColor": {
+                "solid": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#262B34'"
+                      }
+                    }
+                  }
+                }
+              },
+              "reverseDirection": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "hideText": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Metingen.Totaal Punten"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Ranglijst'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0555b521904926084ccd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Teams"
+              }
+            },
+            "Property": "Team"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "978e5d97446ea6e5533b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Doelpunten Tegen"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2748e148dc144250d1a8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Doelpunten Voor"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fcbc08eb724a029de0ee",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Doelsaldo Totaal"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "17daeb5a67a1930a59c7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Punten per Wedstrijd"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4d24ad922273ad6eea4c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Totaal Punten"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d48c36c709007301a784",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Wedstrijden"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fcd2ea5900545574418d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Positie"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ab45216f757a1c61059c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Gelijk"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "df2490b2a8ad983d9b20",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Verlies"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d576e80cab753496e304",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Winst"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7154fb806e2c8dd90872",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Metingen"
+              }
+            },
+            "Property": "Winst %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

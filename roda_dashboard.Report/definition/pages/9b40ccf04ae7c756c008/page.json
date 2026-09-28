@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "9b40ccf04ae7c756c008",
+  "displayName": "Ranglijst",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "visualInteractions": [
+    {
+      "source": "78f2f46ce15883165cbd",
+      "target": "40965891cc1ec99075bc",
+      "type": "NoFilter"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 397,
+            "y": 0
+          },
+          "nodeIndex": "Teams",
+          "nodeLineageTag": "951735cd-5187-438a-81b8-c8bdbf8e6cad",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -50
+          },
+          "nodeIndex": "TeamWedstrijden",
+          "nodeLineageTag": "eae14135-f6da-4985-891e-6b6b242302b1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 398,
+            "y": 143
+          },
+          "nodeIndex": "Datum",
+          "nodeLineageTag": "aa5547bf-9a6f-4add-82b8-15c88e8d1c35",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 883,
+            "y": 219.5
+          },
+          "nodeIndex": "_Metingen",
+          "nodeLineageTag": "a46ad5ae-76c2-42be-adbf-eef37580640a",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

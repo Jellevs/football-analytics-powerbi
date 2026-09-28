@@ -1,0 +1,45 @@
+expression UitPerspectief =
+		let
+		    Source = wedstrijden,
+		    #"Renamed Columns" = Table.RenameColumns(Source,{{"Uitteam", "Team"}, {"Thuisteam", "Tegenstander"}, {"DoelpuntenThuis", "Tegen"}, {"DoelpuntenUit", "Voor"}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns",{"Status", "idEvent"}),
+		    #"Added Custom" = Table.AddColumn(#"Removed Columns", "ThuisUit", each "Uit"),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"ThuisUit", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 2d459410-a4b2-4821-93e8-d22e97db3586
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression wedstrijden =
+		let
+		    Source = Csv.Document(File.Contents("C:\Users\jelle\Work\roda_power_bi\data\wedstrijden\wedstrijden.csv"),[Delimiter=",", Columns=9, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"idEvent", Int64.Type}, {"strSeason", type text}, {"intRound", Int64.Type}, {"dateEvent", type date}, {"strHomeTeam", type text}, {"strAwayTeam", type text}, {"intHomeScore", Int64.Type}, {"intAwayScore", Int64.Type}, {"strStatus", type text}}),
+		    #"Dubbele wedstrijd willem 2 -NAC verwijderd. 5-9-2023" = Table.SelectRows(#"Changed Type", each [idEvent] <> 1890632),
+		    #"Renamed Columns" = Table.RenameColumns(#"Dubbele wedstrijd willem 2 -NAC verwijderd. 5-9-2023",{{"strSeason", "Seizoen"}, {"intRound", "Ronde"}, {"dateEvent", "Datum"}, {"strHomeTeam", "Thuisteam"}, {"strAwayTeam", "Uitteam"}, {"intHomeScore", "DoelpuntenThuis"}, {"intAwayScore", "DoelpuntenUit"}, {"strStatus", "Status"}})
+		in
+		    #"Renamed Columns"
+	lineageTag: 48c3ff51-451f-4672-8964-8881ef59c618
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression ThuisPerspectief =
+		let
+		    Source = wedstrijden,
+		    #"Renamed Columns" = Table.RenameColumns(Source,{{"Thuisteam", "Team"}, {"Uitteam", "Tegenstander"}, {"DoelpuntenThuis", "Voor"}, {"DoelpuntenUit", "Tegen"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "ThuisUit", each "Thuis"),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"ThuisUit", type text}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"idEvent", "Status"})
+		in
+		    #"Removed Columns"
+	lineageTag: c89c5b6b-4457-4592-bfb1-b0491ebb8b44
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

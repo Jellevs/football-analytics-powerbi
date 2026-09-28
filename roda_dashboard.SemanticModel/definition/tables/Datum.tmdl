@@ -1,0 +1,20 @@
+table Datum
+	lineageTag: aa5547bf-9a6f-4add-82b8-15c88e8d1c35
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 6f8e9309-a7a6-4e0e-811f-92d48e11087e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Datum = calculated
+		mode: import
+		source = CALENDAR(DATE(2023, 7, 1), DATE(2025, 6, 30))
+
+	annotation PBI_Id = 7fe79b2f40df405aa6fab475697c870c
+
