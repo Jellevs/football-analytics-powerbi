@@ -1,6 +1,6 @@
-# Roda JC – Eerste Divisie dashboard
+# Eerste Divisie – voetbalanalyse in Power BI
 
-Power BI-dashboard over de Eerste Divisie in de seizoenen 2023-2024 en 2024-2025, met de focus op Roda JC. Alle wedstrijden komen uit een publieke API. De data wordt opgeschoond in Power Query, gemodelleerd als ster-schema en geanalyseerd met DAX.
+Power BI-dashboard over de Eerste Divisie in de seizoenen 2023-2024 en 2024-2025. Je kunt elk team selecteren en vergelijken. Alle wedstrijden komen uit een publieke API. De data wordt opgeschoond in Power Query, gemodelleerd als ster-schema en geanalyseerd met DAX.
 
 ![Ranglijst](images/ranglijst.png)
 ![Seizoensverloop](images/seizoensverloop.png)
